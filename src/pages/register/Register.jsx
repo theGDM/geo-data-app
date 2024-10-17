@@ -60,7 +60,7 @@ export default function Register() {
 
         setRegistered(true);
         let fullName = firstName + " " + lastName;
-        let response = await register(fullName, email, password, avatarValue);
+        let response = await register(fullName, email, password);
         setRegistered(false);
         toast(response.message);
         navigate('/');
@@ -78,7 +78,7 @@ export default function Register() {
     const handleGoogleSignUp = () => {
         signInWithPopup(auth, provider).then(async (data) => {
             setRegistered(true);
-            await register(data.user.displayName, data.user.email, data.user.uid, avatarValue);
+            await register(data.user.displayName, data.user.email, data.user.uid);
             let response = await signIn(data.user.email, data.user.uid);
             setRegistered(false);
             if (response.message != null) {
