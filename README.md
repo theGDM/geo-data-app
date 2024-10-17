@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+## **Website View :**
+![Screenshot 2024-09-07 230455](https://github.com/user-attachments/assets/c5164a15-fbd7-44b1-ab94-0e3befa3678d)
+![Screenshot 2024-09-07 230556](https://github.com/user-attachments/assets/4cbb4083-bb00-4ac6-83b4-2d601d53a688)
+![Screenshot 2024-09-07 232844](https://github.com/user-attachments/assets/7fa5657b-b7c5-4049-9bc3-f185940e6ee0)
+![Screenshot 2024-09-07 234841](https://github.com/user-attachments/assets/a3232359-af9b-4c43-859f-351d0cb38c1e)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Tech Used :**
+**Frontend:** `React.js` `CSS` `Redux` `Material UI`
 
-## Available Scripts
+**Backend:** `Node.js` `Express.js`
 
-In the project directory, you can run:
+**Database:** `MongoDB (NoSQL)`
 
-### `npm start`
+**Hosted Platforms:** `AWS Amplify (Frontend)` `Render.com (Backend)` `Github (Code)`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**IDE:** `Visual Studio Code`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Task Requirements :**
+- Used Node.js with Express for building the backend of the application. ✅
+- Created RESTful API to handle CRUD (Create, Read, Update, Delete) operations for tasks. ✅
+- Implemented routes for creating, updating, and deleting tasks, as well as for retrieving all tasks. ✅
+-  Implemented routes for user registration, login, and Google login authentication. ✅
+- Used NoSQL (MongoDB) database to store task data and user information. ✅
+- Set up the necessary data models to represent tasks and users. ✅
+- Properly handled errors, including sending appropriate error messages and status codes in response. ✅
+- Implemented server-side validation to ensure that task data is valid before saving it to the database. Tasks must have a title and belong to a valid column. ✅
+- Validation for user registration and login data. ✅
+- Drag-and-drop functionality to drag the task to the desired columnuse. ✅
+- Authentication for every page. ✅
+- Used Git to track changes in the code. ✅
+- Intuitive Insterface and responsive UI. ✅
 
-### `npm test`
+## **Advanced Features :**
+- User profile with avatar ✅
+- Task due dates and reminders. ✅
+- Task sorting and searching capabilities. ✅
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **Steps to Run the Application (Locally):**
+1. Firstly fork the given repo.
+2. Create a folder named ‘geo-data-app-gyandeep’ in Visual Studio.
+3. Clone the github repo to the respective ‘geo-data-app-Gyandeep’ folder, using the command.
+   - `$git clone https://github.com/YOUR-USERNAME/geo-data-app.git`
+4. Now go to the ‘geo-data-app’ directory.
+5. Now open the terminal and run the command `npm install` in the same directory, so
+    It will install all the dependencies and the modules.
+6. Now run the react app using the command `npm start`.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**`Github Link :`** https://github.com/theGDM/geo-data-app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **Steps to Run the Application (Production):**
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. The application is deployed on the AWS Amplify.
+    - > https://main.dvgoikkbuyi2j.amplifyapp.com/
