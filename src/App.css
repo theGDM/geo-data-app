@@ -32,7 +32,22 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.Toastify__toast--warning {
+  background: #FFE8BC !important;
+}
+
+.Toastify__toast--error {
+  background: #FCA7A9 !important;
+}
+
+.toastBody {
+  font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+  color: #1F2A40;
+  font-size: 1.4rem !important;
 }
