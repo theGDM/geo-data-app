@@ -1,6 +1,10 @@
 ## **Website View :**
 ![Screenshot 2024-10-17 174759](https://github.com/user-attachments/assets/c3a99667-8f4c-45fd-8de7-a2c3365eef3b)
 ![Screenshot 2024-10-17 174830](https://github.com/user-attachments/assets/6be2efe0-9e86-442b-987a-1e3c1d9bbe93)
+![Screenshot 2024-10-18 175227](https://github.com/user-attachments/assets/d5b1a05a-f4a2-477c-8742-18c4a0e66d04)
+![Screenshot 2024-10-18 175251](https://github.com/user-attachments/assets/891fd180-1942-4851-be00-71ecfe187d70)
+![Screenshot 2024-10-18 175326](https://github.com/user-attachments/assets/0eddb2de-4113-4a47-ac9d-226ecaf67aed)
+
 
 
 ## **Tech Used :**
