@@ -15,6 +15,14 @@ import L from 'leaflet';
 import { updateGeoJson } from '../../services/api';
 import { toast } from 'react-toastify';
 import CreateGeoJson from '../../components/CreateGeoJson';
+import marker from '../../assets/marker.png';
+
+const customMarkerIcon = L.icon({
+    iconUrl: marker,
+    iconSize: [25, 30], // Adjust size according to your image dimensions
+    iconAnchor: [12, 41], // Anchor point of the icon (center bottom)
+    popupAnchor: [1, -34], // Point from where popups should open relative to the icon
+});
 
 const NewGeoJson = () => {
     const location = useLocation();
@@ -50,14 +58,14 @@ const NewGeoJson = () => {
             reader.onload = function (event) {
                 const json = JSON.parse(event.target.result);
                 if (json.type === "FeatureCollection") {
-                    setGeoJsonData(json); // Set the GeoJSON data in the state
+                    setGeoJsonData(json);
                 } else {
                     toast("Invalid GeoJSON file.");
                 }
             };
             reader.readAsText(selectedFile);
         } else {
-            toast("Please upload a valid JSON file.");
+            alert("Please upload a valid JSON file.");
         }
     };
 
@@ -104,40 +112,53 @@ const NewGeoJson = () => {
 
     const onCreated = (e) => {
         const layer = e.layer;
-        if (featureGroupRef.current) {
-            featureGroupRef.current.addLayer(layer); // Add the created layer to the feature group
+
+        if (layer instanceof L.Circle) {
+            const circleGeoJson = {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [layer.getLatLng().lng, layer.getLatLng().lat],
+                },
+                properties: {
+                    radius: layer.getRadius(),
+                },
+            };
 
             setGeoJsonData((prevGeoJson) => ({
                 ...prevGeoJson,
-                features: [...prevGeoJson?.features, layer.toGeoJSON()],
+                features: [...prevGeoJson.features, circleGeoJson],
+            }));
+        } else if (layer instanceof L.Point) {
+            // Apply custom icon to the marker
+            layer.setIcon(customMarkerIcon);
+
+            const newFeature = layer.toGeoJSON();
+            setGeoJsonData((prevGeoJson) => ({
+                ...prevGeoJson,
+                features: [...prevGeoJson.features, newFeature],
+            }));
+        } else {
+            const newFeature = layer.toGeoJSON();
+            setGeoJsonData((prevGeoJson) => ({
+                ...prevGeoJson,
+                features: [...prevGeoJson.features, newFeature],
             }));
         }
     };
 
-    const handleCreateGeoJson = async () => {
-        console.log(geoJsonData);
-        let body = {
-            geoData: geoJsonData
-        }
-
-        await updateGeoJson(location.state.geoJson._id, body);
+    const handleBackNavigaton = () => {
+        navigate('/dashboard');
     }
 
     return (
         <Box width='100vw' height='100vh' display='flex' flexDirection='column' alignItems='center'>
             <Header />
             <Box my='1rem' display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
-                <input
-                    type="file"
-                    id="file-input"
-                    style={{ display: 'none' }}
-                    onChange={handleFileChange}
-                />
-                <label htmlFor="file-input">
+                <Box my='1rem' display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
                     <Button
                         type="button"
                         variant="contained"
-                        component="span"
                         sx={{
                             mt: '0.3rem',
                             mb: '0.2rem',
@@ -148,10 +169,38 @@ const NewGeoJson = () => {
                             fontSize: '1.2rem',
                             borderRadius: '0.2rem'
                         }}
+                        onClick={handleBackNavigaton}
                     >
-                        IMPORT GEOJSON FILE
+                        BACK
                     </Button>
-                </label>
+                    <Box width='1.5rem'></Box>
+                    <input
+                        type="file"
+                        id="file-input"
+                        style={{ display: 'none' }}
+                        onChange={handleFileChange}
+                    />
+                    <label htmlFor="file-input">
+                        <Button
+                            type="button"
+                            variant="contained"
+                            component="span"
+                            sx={{
+                                mt: '0.3rem',
+                                mb: '0.2rem',
+                                backgroundColor: colors.greenAccent[600],
+                                "&:hover": {
+                                    backgroundColor: colors.greenAccent[700], // Set your desired hover color
+                                },
+                                fontSize: '1.2rem',
+                                borderRadius: '0.2rem'
+                            }}
+                        >
+                            IMPORT GEOJSON FILE
+                        </Button>
+                    </label>
+                </Box>
+
                 {file ? <Typography fontSize='1.3rem' color={colors.blueAccent[400]} mt='0.5rem'>{file.name}</Typography> : <></>}
             </Box>
             <Box width='210mm' maxHeight='297mm' backgroundColor='#EDEAFF' mb='1rem' color='#000' mx='auto'>
@@ -159,7 +208,17 @@ const NewGeoJson = () => {
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {<GeoJSON key='my-geojson' data={geoJsonData} />}
+                    {<GeoJSON
+                        key='my-geojson'
+                        data={geoJsonData}
+                        pointToLayer={(feature, latlng) => {
+                            // Check if the geometry is a point (marker)
+                            if (feature.geometry.type === 'Point') {
+                                return L.marker(latlng, { icon: customMarkerIcon });
+                            }
+                            return L.marker(latlng); // Default marker for other cases
+                        }}
+                    />}
                     <FeatureGroup ref={featureGroupRef}>
                         <EditControl
                             position='topright'

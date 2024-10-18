@@ -13,6 +13,14 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-draw/dist/leaflet.draw.css';
 import L from 'leaflet';
 import { updateGeoJson } from '../../services/api';
+import marker from '../../assets/marker.png';
+
+const customMarkerIcon = L.icon({
+    iconUrl: marker,
+    iconSize: [25, 30], // Adjust size according to your image dimensions
+    iconAnchor: [12, 41], // Anchor point of the icon (center bottom)
+    popupAnchor: [1, -34], // Point from where popups should open relative to the icon
+});
 
 const GeoMap = () => {
     const location = useLocation();
@@ -78,12 +86,36 @@ const GeoMap = () => {
 
     const onCreated = (e) => {
         const layer = e.layer;
-        if (featureGroupRef.current) {
-            featureGroupRef.current.addLayer(layer); // Add the created layer to the feature group
+
+        if (layer instanceof L.Circle) {
+            const circleGeoJson = {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [layer.getLatLng().lng, layer.getLatLng().lat],
+                },
+                properties: {
+                    radius: layer.getRadius(),
+                },
+            };
 
             setGeoJsonData((prevGeoJson) => ({
                 ...prevGeoJson,
-                features: [...prevGeoJson.features, layer.toGeoJSON()],
+                features: [...prevGeoJson.features, circleGeoJson],
+            }));
+        } else if (layer instanceof L.Marker) {
+            layer.setIcon(customMarkerIcon);
+
+            const newFeature = layer.toGeoJSON();
+            setGeoJsonData((prevGeoJson) => ({
+                ...prevGeoJson,
+                features: [...prevGeoJson.features, newFeature],
+            }));
+        } else {
+            const newFeature = layer.toGeoJSON();
+            setGeoJsonData((prevGeoJson) => ({
+                ...prevGeoJson,
+                features: [...prevGeoJson.features, newFeature],
             }));
         }
     };
@@ -154,7 +186,17 @@ const GeoMap = () => {
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <GeoJSON key='my-geojson' data={geoJsonData} />
+                    {<GeoJSON
+                        key='my-geojson'
+                        data={geoJsonData}
+                        pointToLayer={(feature, latlng) => {
+                            // Check if the geometry is a point (marker)
+                            if (feature.geometry.type === 'Point') {
+                                return L.marker(latlng, { icon: customMarkerIcon });
+                            }
+                            return L.marker(latlng); // Default marker for other cases
+                        }}
+                    />}
                     <FeatureGroup ref={featureGroupRef}>
                         <EditControl
                             position='topright'

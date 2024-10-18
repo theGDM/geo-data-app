@@ -16,23 +16,24 @@
 
 ## **Task Requirements :**
 - Used Node.js with Express for building the backend of the application. ✅
-- Created RESTful API to handle CRUD (Create, Read, Update, Delete) operations for tasks. ✅
-- Implemented routes for creating, updating, and deleting tasks, as well as for retrieving all tasks. ✅
--  Implemented routes for user registration, login, and Google login authentication. ✅
-- Used NoSQL (MongoDB) database to store task data and user information. ✅
-- Set up the necessary data models to represent tasks and users. ✅
+- Created RESTful API to handle CRUD (Create, Read, Update, Delete) operations for geospatial data. ✅
+- Implemented routes for creating, updating, and deleting geospatial data, as well as for retrieving geospatial data. ✅
+- Implemented routes for user registration, login, and Google login authentication. ✅
+- Used NoSQL (MongoDB) database to store geoJson data and user information. ✅
+- Set up the necessary data models to represent geoJsons and users. ✅
 - Properly handled errors, including sending appropriate error messages and status codes in response. ✅
-- Implemented server-side validation to ensure that task data is valid before saving it to the database. Tasks must have a title and belong to a valid column. ✅
+- Implemented a map view where users can draw custom shapes on the map using a tool like Leaflet. ✅
+- Users can save the drawn shapes to their account. ✅
+- Added unctionality to edit existing shapes, including modifying their geometry and attributes. ✅
+- Implemented server-side validation to ensure that geoJson data is valid before saving it to the database. geoJson must have a title and short description. ✅
+- Create endpoints for uploading and managing GeoJSON. ✅
 - Validation for user registration and login data. ✅
-- Drag-and-drop functionality to drag the task to the desired columnuse. ✅
 - Authentication for every page. ✅
 - Used Git to track changes in the code. ✅
-- Intuitive Insterface and responsive UI. ✅
+- Intuitive Interface and responsive UI. ✅
 
-## **Advanced Features :**
-- User profile with avatar ✅
-- Task due dates and reminders. ✅
-- Task sorting and searching capabilities. ✅
+## **Bonus Features :**
+- SignUp and SignIn via google. ✅
 
 ## **Steps to Run the Application (Locally):**
 1. Firstly fork the given repo.

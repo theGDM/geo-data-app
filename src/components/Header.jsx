@@ -25,6 +25,10 @@ export default function Header() {
         }
     }
 
+    const handleCreateNewGeoJson = () => {
+        navigate('/create-new-geo-json');
+    }
+
     return (
         <Box width='100vw' height='8vh' display='flex' flexDirection='row' alignItems='center' justifyContent='space-between' bgcolor={colors.blackAccent[600]} p='0 10px' sx={{ boxShadow: "0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.9)" }}>
             <img src={logo} style={{ height: '80%' }} />
@@ -67,6 +71,24 @@ export default function Header() {
                     </Button>
                 </Box>
             </Box> : <Box display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
+                <Button
+                    type="button"
+                    variant="contained"
+                    sx={{
+                        mt: '0.3rem',
+                        mb: '0.2rem',
+                        backgroundColor: colors.greenAccent[500],
+                        "&:hover": {
+                            backgroundColor: colors.greenAccent[600], // Set your desired hover color
+                        },
+                        fontSize: '1.2rem',
+                        borderRadius: '0'
+                    }}
+                    onClick={handleCreateNewGeoJson}
+                >
+                    +
+                </Button>
+                <Box width='1.5rem'></Box>
                 <Button
                     type="button"
                     variant="contained"

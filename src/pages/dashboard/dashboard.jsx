@@ -8,6 +8,7 @@ import { fetchGeoJsons } from "../../actions/GeoJsonAction";
 import { deleteGeoJson } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import newGeoJson from '../../assets/globe.png';
+import backgroundImageUrl from '../../assets/bg-4.png';
 
 const Dashboard = () => {
     const theme = useTheme();
@@ -37,7 +38,7 @@ const Dashboard = () => {
     }
 
     return (
-        <Box width='100vw' height='100vh' >
+        <Box width='100vw' height='100vh' position='relative' sx={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: "cover", imageOrientation: 'landscape' }}>
             <Header />
             <Box display='flex' flexDirection='row' alignItems='center' m='2rem 1.6rem' flexWrap='wrap'>
                 <Box width='25rem' height='15rem' bgcolor={colors.blackAccent[500]} borderRadius='0.5rem' sx={{ cursor: 'pointer' }} p='1rem' m='1rem' boxShadow='0.2rem 0.2rem 0.8rem #000' display='flex' flexDirection='column' alignItems='center' justifyContent='center' onClick={handleCreateNewGeoJson}>
