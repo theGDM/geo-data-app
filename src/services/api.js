@@ -38,3 +38,36 @@ export const getUser = async (email) => {
     }
 }
 
+export const updateGeoJson = async (geoJsonId, body) => {
+    console.log(geoJsonId);
+    console.log(body);
+    try {
+        let response = await axios.put(`${baseURL}/api/geojsons/${geoJsonId}`, body);
+        toast('GeoJson updated successfully!');
+    } catch (err) {
+        console.log(err);
+        toast('Some error occured while upadting the GeoJson!');
+    }
+}
+
+export const deleteGeoJson = async (geoJsonId) => {
+    try {
+        let response = await axios.delete(`${baseURL}/api/geojsons/${geoJsonId}`);
+        toast('GeoJson deleted successfully created!');
+    } catch (err) {
+        console.log(err);
+        toast('Some error occured while deleting the GeoJson data!');
+    }
+}
+
+
+export const getAllGeoJson = async (userId) => {
+    try {
+        let response = await axios.get(`${baseURL}/api/geojsons/${userId}/geojsons`);
+        return response;
+    } catch (err) {
+        console.log(err);
+        toast('Some error occured while getting the GeoJsons!');
+    }
+}
+
