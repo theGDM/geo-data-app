@@ -32,11 +32,15 @@ const Dashboard = () => {
         navigate('/geomap', { state: { geoJson } });
     }
 
+    const handleCreateNewGeoJson = () => {
+        navigate('/create-new-geo-json');
+    }
+
     return (
         <Box width='100vw' height='100vh' >
             <Header />
             <Box display='flex' flexDirection='row' alignItems='center' m='2rem 1.6rem' flexWrap='wrap'>
-                <Box width='25rem' height='15rem' bgcolor={colors.blackAccent[500]} borderRadius='0.5rem' sx={{ cursor: 'pointer' }} p='1rem' m='1rem' boxShadow='0.2rem 0.2rem 0.8rem #000' display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
+                <Box width='25rem' height='15rem' bgcolor={colors.blackAccent[500]} borderRadius='0.5rem' sx={{ cursor: 'pointer' }} p='1rem' m='1rem' boxShadow='0.2rem 0.2rem 0.8rem #000' display='flex' flexDirection='column' alignItems='center' justifyContent='center' onClick={handleCreateNewGeoJson}>
                     <img src={newGeoJson} style={{ height: '60%' }} />
                     <Typography fontSize='1.5rem' color={colors.greenAccent[400]} mt='0.5rem'>Import/Create Geo Json</Typography>
                 </Box>
