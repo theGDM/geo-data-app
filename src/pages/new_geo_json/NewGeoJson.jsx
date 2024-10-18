@@ -16,6 +16,7 @@ import { updateGeoJson } from '../../services/api';
 import { toast } from 'react-toastify';
 import CreateGeoJson from '../../components/CreateGeoJson';
 import marker from '../../assets/marker.png';
+import backgroundImageUrl from '../../assets/bg-4.png';
 
 const customMarkerIcon = L.icon({
     iconUrl: marker,
@@ -152,7 +153,7 @@ const NewGeoJson = () => {
     }
 
     return (
-        <Box width='100vw' height='100vh' display='flex' flexDirection='column' alignItems='center'>
+        <Box width='100vw' height='100vh' display='flex' flexDirection='column' alignItems='center' position='relative' sx={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: "cover", imageOrientation: 'landscape' }}>
             <Header />
             <Box my='1rem' display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
                 <Box my='1rem' display='flex' flexDirection='row' alignItems='center' justifyContent='center'>
