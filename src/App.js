@@ -8,6 +8,8 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import NotFound from "./pages/not_found/NotFound";
 import Dashboard from "./pages/dashboard/dashboard";
+import GeoMap from "./pages/geo_map/GeoMap";
+import NewGeoJson from "./pages/new_geo_json/NewGeoJson";
 
 
 const App = () => {
@@ -25,6 +27,8 @@ const App = () => {
               <Route exact path="/" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/geomap" element={<GeoMap />} />
+              <Route path="/create-new-geo-json" element={<NewGeoJson />} />
               <Route path="/*" element={<NotFound />} />
             </Routes>
           </main>
